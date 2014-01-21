@@ -1,0 +1,12 @@
+awk '{if ($1<50) print $0}' stat.txt |  awk '{total = total + $1}END{print total}'
+# compute the sum of all the values in one column 
+
+
+awk -F $'\t' '$3{print $0, $3}' different_with_high_confidence_no_score_20more_01_15.txt 
+
+# tab seperatorl
+
+
+awk 'BEGIN{FS="\t"}FNR==NR{a[$1]++;next}a[$3]' 20_items_pt.txt different_with_high_confidence_no_score_20more_01_15.txt | wc -l 
+awk 'FNR==NR{if ($1<20) {a[$2]=$1; next}} {FS="\t"}$3{print a[$3]}' stat.txt  different_with_high_confidence_no_score_20more_01_15.txt | wc -l 
+
